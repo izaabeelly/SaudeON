@@ -47,16 +47,18 @@ class Horario(models.Model):
         verbose_name_plural = "Horario"
 
     def __str__(self):
-        return f'{self.nome}'
+        return f'{self.horario}'
     
 class Consulta(models.Model):
-    nome = models.CharField(max_length=100, verbose_name="Nome do medico")
-    cidade = models.ForeignKey(Cidades, on_delete=models.CASCADE)
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    posto = models.ForeignKey(Posto, on_delete=models.CASCADE)
+    area = models.ForeignKey(Area, on_delete=models.CASCADE)
+    horario = models.ForeignKey(Horario, on_delete=models.CASCADE)
     class Meta:
         verbose_name_plural = "Medico"
 
     def __str__(self):
-        return f'{self.nome}'
+        return f'{self.pessoa, self.posto, self.area, self.horario}'
     
 
 
